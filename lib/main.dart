@@ -1,0 +1,344 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_spiderman/buttonbar.dart';
+import 'package:flutter_spiderman/second.dart';
+
+void main() {
+  runApp(const StoreApp());
+}
+
+class StoreApp extends StatelessWidget {
+  const StoreApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(debugShowCheckedModeBanner: false, home: Home());
+  }
+}
+
+class Home extends StatefulWidget {
+  const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return SafeArea(
+      child: Scaffold(
+          backgroundColor: const Color(0xFF020017),
+          body: Column(children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: const [
+                  Text(
+                    'Discover',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: iconHeader(size),
+            ),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: const [
+                  Text('Recommended', style: TextStyle(color: Colors.white)),
+                  SizedBox(
+                    width: 6,
+                  ),
+                  Text('New', style: TextStyle(color: Colors.white)),
+                  SizedBox(
+                    width: 6,
+                  ),
+                  Text('Best sollor', style: TextStyle(color: Colors.white))
+                ]),
+            Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(children: [
+                  Stack(
+                    children: [
+                      Container(
+                        height: 250,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            image: const DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage('assets/cover.png'))),
+                      ),
+                      Positioned(
+                        right: 2,
+                        top: 5,
+                        child: Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(1000)),
+                          child: const Icon(
+                            Icons.favorite_border,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        right: 0,
+                        left: 0,
+                        bottom: 0,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const secondScreen(),
+                              ),
+                            );
+                          },
+                          child: shopContainer(),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'Treding',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                            Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(1000),
+                                  color: Colors.black),
+                              child: const Icon(
+                                Icons.arrow_forward_ios_outlined,
+                                color: Colors.white,
+                              ),
+                            )
+                          ])),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0.0),
+                    child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 0),
+                          child: Row(children: [
+                            photo1(),
+                            photo2(),
+                          ]),
+                        )),
+                  )
+                ])),
+            const Padding(
+              padding: EdgeInsets.all(5.0),
+              child: SizedBox(
+                width: double.infinity,
+                height: 59,
+                child: buttonbar(),
+              ),
+            )
+          ])),
+    );
+  }
+
+  Stack photo1() {
+    return Stack(
+      children: [
+        Container(
+          height: 230,
+          width: 200,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              image: const DecorationImage(
+                  image: AssetImage('assets/pic1.jpg'), fit: BoxFit.cover)),
+        ),
+        Positioned(
+          bottom: 0,
+          child: Container(
+            width: 200,
+            height: 50,
+            decoration: const BoxDecoration(
+                color: Color.fromARGB(
+                  100,
+                  213,
+                  208,
+                  208,
+                ),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20))),
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Creature',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(1100),
+                          color: Colors.blue),
+                      child: const Icon(Icons.add))
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Stack photo2() {
+    return Stack(children: [
+      Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Container(
+          height: 230,
+          width: 200,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              image: const DecorationImage(
+                  image: AssetImage('assets/pic2.jpg'), fit: BoxFit.cover)),
+        ),
+      ),
+      Positioned(
+        bottom: 0,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Container(
+            width: 200,
+            height: 50,
+            decoration: const BoxDecoration(
+                color: Color.fromARGB(
+                  100,
+                  213,
+                  208,
+                  208,
+                ),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20))),
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // ignore: prefer_const_constructors
+                  Text(
+                    'Action',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(1100)),
+                      child: const Icon(Icons.add))
+                ],
+              ),
+            ),
+          ),
+        ),
+      )
+    ]);
+  }
+
+  Container shopContainer() {
+    return Container(
+      width: double.infinity,
+      height: 50,
+      decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20)),
+          color: Color.fromARGB(
+            100,
+            213,
+            208,
+            208,
+          )),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            Text('Spider man miles morales',
+                style: TextStyle(color: Colors.white)),
+            Icon(
+              Icons.shopping_cart_outlined,
+              color: Colors.white,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Row iconHeader(Size size) {
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Container(
+            height: 50,
+            width: size.width / 1.4,
+            decoration: (BoxDecoration(
+                color: const Color.fromARGB(
+                  100,
+                  213,
+                  208,
+                  208,
+                ),
+                borderRadius: BorderRadius.circular(10))),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(
+                  Icons.search_outlined,
+                  color: Colors.white,
+                ),
+                Text(
+                  'Search',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Container(
+          width: 80,
+          height: 50,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(
+                100,
+                213,
+                208,
+                208,
+              ),
+              borderRadius: BorderRadius.circular(10)),
+          child: const Icon(
+            Icons.content_paste_rounded,
+            color: Colors.white,
+          ),
+        )
+      ],
+    );
+  }
+}
