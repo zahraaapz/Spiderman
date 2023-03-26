@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
           backgroundColor: const Color(0xFF020017),
           body: Column(children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(size.width / 45),
               child: Row(
                 children: const [
                   Text(
@@ -45,29 +45,29 @@ class _HomeState extends State<Home> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 8.0),
+              padding: EdgeInsets.only(top: size.width / 45),
               child: iconHeader(size),
             ),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  Text('Recommended', style: TextStyle(color: Colors.white)),
-                  SizedBox(
-                    width: 6,
-                  ),
-                  Text('New', style: TextStyle(color: Colors.white)),
-                  SizedBox(
-                    width: 6,
-                  ),
-                  Text('Best sollor', style: TextStyle(color: Colors.white))
-                ]),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              const Text('Recommended', style: TextStyle(color: Colors.white)),
+              SizedBox(
+                width: size.width / 43,
+              ),
+              const Text('New', style: TextStyle(color: Colors.white)),
+              SizedBox(
+                width: size.width / 43,
+              ),
+              const Text('Best sollor', style: TextStyle(color: Colors.white))
+            ]),
             Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(
+                  size.width / 55,
+                ),
                 child: Column(children: [
                   Stack(
                     children: [
                       Container(
-                        height: 250,
+                        height: size.height / 3.3,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             image: const DecorationImage(
@@ -75,11 +75,11 @@ class _HomeState extends State<Home> {
                                 image: AssetImage('assets/cover.png'))),
                       ),
                       Positioned(
-                        right: 2,
-                        top: 5,
+                        right: size.width / 50,
+                        top: size.width / 43,
                         child: Container(
-                          width: 40,
-                          height: 40,
+                          width: size.width / 9,
+                          height: size.width / 9,
                           decoration: BoxDecoration(
                               color: Colors.black,
                               borderRadius: BorderRadius.circular(1000)),
@@ -101,13 +101,13 @@ class _HomeState extends State<Home> {
                               ),
                             );
                           },
-                          child: shopContainer(),
+                          child: shopContainer(size),
                         ),
                       ),
                     ],
                   ),
                   Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(size.width / 75),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -117,8 +117,8 @@ class _HomeState extends State<Home> {
                                   TextStyle(color: Colors.white, fontSize: 20),
                             ),
                             Container(
-                              width: 40,
-                              height: 40,
+                              width: size.width / 9,
+                              height: size.width / 9,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(1000),
                                   color: Colors.black),
@@ -128,37 +128,31 @@ class _HomeState extends State<Home> {
                               ),
                             )
                           ])),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 0.0),
-                    child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 0),
-                          child: Row(children: [
-                            photo1(),
-                            photo2(),
-                          ]),
-                        )),
-                  )
+                  SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(children: [
+                        photo1(size),
+                        photo2(size),
+                      ]))
                 ])),
-            const Padding(
-              padding: EdgeInsets.all(5.0),
+            Padding(
+              padding: EdgeInsets.all(size.width / 82),
               child: SizedBox(
                 width: double.infinity,
-                height: 59,
-                child: buttonbar(),
+                height: size.width / 7,
+                child: const buttonbar(),
               ),
             )
           ])),
     );
   }
 
-  Stack photo1() {
+  Stack photo1(size) {
     return Stack(
       children: [
         Container(
-          height: 230,
-          width: 200,
+          height: size.height / 3.5,
+          width: size.width / 2.05,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               image: const DecorationImage(
@@ -167,8 +161,8 @@ class _HomeState extends State<Home> {
         Positioned(
           bottom: 0,
           child: Container(
-            width: 200,
-            height: 50,
+            width: size.width / 2.05,
+            height: size.width / 7.23,
             decoration: const BoxDecoration(
                 color: Color.fromARGB(
                   100,
@@ -180,7 +174,7 @@ class _HomeState extends State<Home> {
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20))),
             child: Padding(
-              padding: const EdgeInsets.all(5.0),
+              padding: EdgeInsets.all(size.width / 50),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -189,8 +183,8 @@ class _HomeState extends State<Home> {
                     style: TextStyle(color: Colors.white),
                   ),
                   Container(
-                      width: 40,
-                      height: 40,
+                      width: size.width / 10,
+                      height: size.height / 20,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(1100),
                           color: Colors.blue),
@@ -204,13 +198,13 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Stack photo2() {
+  Stack photo2(size) {
     return Stack(children: [
       Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(size.width / 25),
         child: Container(
-          height: 230,
-          width: 200,
+          height: size.height / 3.5,
+          width: size.width / 2.05,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               image: const DecorationImage(
@@ -220,10 +214,10 @@ class _HomeState extends State<Home> {
       Positioned(
         bottom: 0,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(size.width / 25),
           child: Container(
-            width: 200,
-            height: 50,
+            width: size.width / 2.05,
+            height: size.width / 7.23,
             decoration: const BoxDecoration(
                 color: Color.fromARGB(
                   100,
@@ -235,7 +229,9 @@ class _HomeState extends State<Home> {
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20))),
             child: Padding(
-              padding: const EdgeInsets.all(5.0),
+              padding: EdgeInsets.all(
+                size.width / 50,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -245,8 +241,8 @@ class _HomeState extends State<Home> {
                     style: TextStyle(color: Colors.white),
                   ),
                   Container(
-                      width: 40,
-                      height: 40,
+                      width: size.width / 10,
+                      height: size.height / 20,
                       decoration: BoxDecoration(
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(1100)),
@@ -260,10 +256,10 @@ class _HomeState extends State<Home> {
     ]);
   }
 
-  Container shopContainer() {
+  Container shopContainer(size) {
     return Container(
       width: double.infinity,
-      height: 50,
+      height: size.height / 22,
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20),
@@ -275,7 +271,7 @@ class _HomeState extends State<Home> {
             208,
           )),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(size.width / 50),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const [
@@ -295,9 +291,9 @@ class _HomeState extends State<Home> {
     return Row(
       children: [
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(size.height / 82),
           child: Container(
-            height: 50,
+            height: size.height / 18,
             width: size.width / 1.4,
             decoration: (BoxDecoration(
                 color: const Color.fromARGB(
@@ -323,8 +319,8 @@ class _HomeState extends State<Home> {
           ),
         ),
         Container(
-          width: 80,
-          height: 50,
+          width: size.width / 6,
+          height: size.height / 18,
           decoration: BoxDecoration(
               color: const Color.fromARGB(
                 100,
