@@ -15,6 +15,7 @@ class _buttonbarState extends State<buttonbar> {
   int select = 0;
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: const Color(0xFF020017),
       body: Stack(children: [
@@ -22,7 +23,7 @@ class _buttonbarState extends State<buttonbar> {
           alignment: Alignment.bottomCenter,
           child: AnimatedContainer(
             width: double.infinity,
-            height: 60,
+            height: size.height / 15,
             duration: const Duration(milliseconds: 200),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25), color: colorbar),
@@ -34,7 +35,7 @@ class _buttonbarState extends State<buttonbar> {
                     onTap: () => setState(() {
                       select = i;
                     }),
-                    child: Selecticon(i),
+                    child: Selecticon(i, size),
                   ),
               ],
             ),
@@ -45,10 +46,10 @@ class _buttonbarState extends State<buttonbar> {
   }
 
   // ignore: non_constant_identifier_names
-  Selecticon(int i) {
+  Selecticon(int i, size) {
     bool active = select == i ? true : false;
     return SizedBox(
-      height: 50,
+      height: size.height / 15,
       child: Align(
         alignment: Alignment.center,
         child: Icon(

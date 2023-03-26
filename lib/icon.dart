@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class icons {
  
-  late IconData icon;
+ IconData icon;
   
 
   icons({required this.icon});

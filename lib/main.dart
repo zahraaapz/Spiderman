@@ -3,11 +3,11 @@ import 'package:flutter_spiderman/buttonbar.dart';
 import 'package:flutter_spiderman/second.dart';
 
 void main() {
-  runApp(const StoreApp());
+  runApp(const MyApp());
 }
 
-class StoreApp extends StatelessWidget {
-  const StoreApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,9 @@ class _HomeState extends State<Home> {
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => const secondScreen(),
+                                builder: (context) => secondScreen(
+                                  size: size,
+                                ),
                               ),
                             );
                           },
@@ -135,12 +137,15 @@ class _HomeState extends State<Home> {
                         photo2(size),
                       ]))
                 ])),
-            Padding(
-              padding: EdgeInsets.all(size.width / 82),
-              child: SizedBox(
-                width: double.infinity,
-                height: size.width / 7,
-                child: const buttonbar(),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(
+                    left: size.width / 82, right: size.width / 82),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: size.width / 7,
+                  child: buttonbar(),
+                ),
               ),
             )
           ])),
