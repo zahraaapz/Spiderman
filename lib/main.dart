@@ -144,7 +144,7 @@ class _HomeState extends State<Home> {
                 child: SizedBox(
                   width: double.infinity,
                   height: size.width / 7,
-                  child: buttonbar(),
+                  child: const buttonbar(),
                 ),
               ),
             )
